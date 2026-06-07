@@ -110,12 +110,23 @@ const UserLoginForm = () => {
                 />
               </div>
               <button
-                type="submit"
-                className="btn bg-color custom-bg-text"
-                onClick={loginAction}
-              >
-                Login
-              </button>
+    type="submit"
+    onClick={loginAction}
+    style={{
+        width: '100%',
+        padding: '12px',
+        backgroundColor: '#00bcd4',
+        color: '#000',
+        border: 'none',
+        borderRadius: '8px',
+        fontSize: '16px',
+        fontWeight: 'bold',
+        cursor: 'pointer',
+        marginTop: '10px'
+    }}
+>
+    Login
+</button>
               <ToastContainer />
             </form>
           </div>

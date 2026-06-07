@@ -1,4 +1,5 @@
 import "./App.css";
+import GetStarted from "./page/GetStarted";
 import { Route, Routes } from "react-router-dom";
 import AboutUs from "./page/AboutUs";
 import ContactUs from "./page/ContactUs";
@@ -21,6 +22,7 @@ function App() {
     <div>
       <Header />
       <Routes>
+        <Route path="/register" element={<GetStarted />} />
         <Route path="/" element={<HomePage />} />
         <Route path="/home" element={<HomePage />} />
         <Route path="/home/all/hotel/location" element={<HomePage />} />

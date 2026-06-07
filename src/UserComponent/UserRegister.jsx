@@ -83,9 +83,26 @@ const UserRegister = () => {
     getAllBloodGroup();
     getAllSpecialist();
   }, []);
-
-  const saveUser = (event) => {
+const saveUser = (event) => {
     event.preventDefault();
+    
+    // Validation
+    if (!user.firstName || !user.lastName || !user.emailId || !user.password || 
+        !user.sex || !user.bloodGroup || !user.contact || !user.age || 
+        !user.street || !user.city || !user.pincode) {
+        toast.error("Please fill in all fields!", { position: "top-center" });
+        return;
+    }
+
+    if (user.password.length < 6) {
+        toast.error("Password must be at least 6 characters!", { position: "top-center" });
+        return;
+    }
+
+    if (user.contact.length !== 10) {
+        toast.error("Contact number must be 10 digits!", { position: "top-center" });
+        return;
+    }
     fetch("http://localhost:8080/api/user/register", {
       method: "POST",
       headers: {
@@ -278,11 +295,23 @@ const UserRegister = () => {
                 />
               </div>
               <div className="d-flex aligns-items-center justify-content-center">
-                <input
-                  type="submit"
-                  className="btn bg-color custom-bg-text"
-                  value="Register User"
-                />
+                <button
+    type="submit"
+    style={{
+        width: '100%',
+        padding: '12px',
+        backgroundColor: '#00bcd4',
+        color: '#000',
+        border: 'none',
+        borderRadius: '8px',
+        fontSize: '16px',
+        fontWeight: 'bold',
+        cursor: 'pointer',
+        marginTop: '10px'
+    }}
+>
+    Register User
+</button>
               </div>
               <ToastContainer />
             </form>

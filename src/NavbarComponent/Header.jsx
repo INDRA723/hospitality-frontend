@@ -1,65 +1,74 @@
-import { Link } from "react-router-dom";
-import logo from "../images/h_logo.png";
-import RoleNav from "./RoleNav";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-const Header = () => {
+function Header() {
   return (
-    <div>
-      <nav className="navbar  navbar-expand-lg custom-bg text-color">
-        <div className="container-fluid text-color">
-          <img
-            src={logo}
-            width="40"
-            height="40"
-            className="d-inline-block align-top"
-            alt=""
-          />
-          <Link to="/" className="navbar-brand">
-            <i>
-              <b className="text-color">Hospital Management System</b>
-            </i>
-          </Link>
-
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link
-                  to="/about"
-                  className="nav-link active"
-                  aria-current="page"
-                >
-                  <b className="text-color">About Us</b>
-                </Link>
-              </li>
-
-              <li className="nav-item">
-                <Link
-                  to="/contact"
-                  className="nav-link active"
-                  aria-current="page"
-                >
-                  <b className="text-color">Contact Us</b>
-                </Link>
-              </li>
-            </ul>
-
-            <RoleNav />
-          </div>
-        </div>
-      </nav>
-    </div>
+    <nav style={styles.navbar}>
+      <div style={styles.logo}>
+        🏥 <span style={styles.logoText}>HMS</span>
+      </div>
+      <ul style={styles.navLinks}>
+        <li><Link to="/" style={styles.link}>Home</Link></li>
+        <li><Link to="/about" style={styles.link}>About Us</Link></li>
+        <li><Link to="/contact" style={styles.link}>Contact</Link></li>
+      </ul>
+      <div style={styles.buttons}>
+        <Link to="/user/login" style={styles.loginBtn}>Login</Link>
+        <Link to="/user/patient/register" style={styles.registerBtn}>Register</Link>
+      </div>
+    </nav>
   );
+}
+
+const styles = {
+  navbar: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: '15px 40px',
+    backgroundColor: '#1a1a1a',
+    borderBottom: '2px solid #00bcd4',
+    position: 'sticky',
+    top: 0,
+    zIndex: 9999,
+  },
+  logo: {
+    fontSize: '24px',
+    fontWeight: 'bold',
+    color: '#00bcd4',
+  },
+  logoText: {
+    marginLeft: '8px',
+    letterSpacing: '2px',
+  },
+  navLinks: {
+    display: 'flex',
+    listStyle: 'none',
+    gap: '30px',
+  },
+  link: {
+    color: '#cccccc',
+    fontSize: '15px',
+  },
+  buttons: {
+    display: 'flex',
+    gap: '12px',
+  },
+  loginBtn: {
+    padding: '8px 20px',
+    border: '1px solid #00bcd4',
+    borderRadius: '6px',
+    color: '#00bcd4',
+    fontSize: '14px',
+  },
+  registerBtn: {
+    padding: '8px 20px',
+    backgroundColor: '#00bcd4',
+    borderRadius: '6px',
+    color: '#000',
+    fontSize: '14px',
+    fontWeight: 'bold',
+  },
 };
 
 export default Header;
